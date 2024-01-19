@@ -28,11 +28,22 @@ for (const tab of tabs) {
 }
 document.querySelector("ul").append(...elements);
 
-const button = document.querySelector("button");
-button.addEventListener("click", async () => {  // creates button to group tab and move them to current window
-  const tabIds = tabs.map(({ id }) => id);
-  if (tabIds.length) {
+const group_tabs = document.getElementById("group")
+group_tabs.addEventListener("click", async () => {  // creates button to group tab and move them to current window
+  const tabIds = tabs.map(({ id }) => id);  // returns arr of all tabs ids 
+  if (tabIds.length) {  // if tabsId not empty
     const group = await chrome.tabs.group({ tabIds });
     await chrome.tabGroups.update(group, { title: "DOCS" });
   }
 });
+
+const ungroup_tabs = document.getElementById("ungroup")
+// ungroup all
+ungroup_tabs.addEventListener("click", async () => {  // creates button to group tab and move them to current window
+    const tabIds = tabs.map(({ id }) => id);
+    if (tabIds.length) {
+        await chrome.tabs.ungroup(tabIds)
+    }
+  });
+
+// TODO: ungroup just specified tab

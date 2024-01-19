@@ -9,9 +9,8 @@
     "128": "images/icon-128.png"
   },
   "action": {
-    "default_popup": "popup.html",
-    "host_permissions": ["https://developer.chrome.com/*"],
-    "permissions": ["tabGroups"]
-  }
-  
+    "default_popup": "popup.html"
+  },
+  "host_permissions": ["https://developer.chrome.com/*"],
+  "permissions": ["tabGroups"]
 }
